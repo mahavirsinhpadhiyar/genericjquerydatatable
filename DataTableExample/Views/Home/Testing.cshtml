@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Testing";
+}
+
+<h2>Testing</h2>
+<link href="~/Scripts/Datatable/jquery.dataTables.min.css" rel="stylesheet" />
+<div>
+    <table class="table table-bordered" id="TestDataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+    </table>
+
+
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Datatable/jquery.dataTables.min.js"></script>
+
+<script>
+    var table;
+
+    table = $("#TestDataTable").DataTable({
+        "processing": true,
+        "serverSide": true,
+        "bSortable": true,
+        "ajax": {
+            "url": "/Home/GetTableData",
+            "type": "POST",
+            "data": function (result) {
+                debugger;
+                result.id = 0;
+                result.data = result.columns[result.order[0].column].data;
+                result.search = $("#TestDataTable input[type='search']").val();
+            },
+        },
+
+        "dataSrc": function (response) {
+            return response.data;
+        },
+        "columns": [
+            {
+                data: "Name",
+            },
+            {
+                data: "Title",
+                //"bSortable": false
+            }
+        ],
+        "pageLength": 10,
+        "LengthMenu": [10, 25, 50],
+    });
+</script>
