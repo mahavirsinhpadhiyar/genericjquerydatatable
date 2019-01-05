@@ -27,8 +27,10 @@
     <script>
 
         var AjaxURL = '@Url.Action("GetTableData", "Home")';
+        
+
         $(document).ready(function () {
-            CommonFunction("TestDataTable",true,true,AjaxURL);
+            CommonFunction("TestDataTable", true, true, AjaxURL, ColumnNames("Name,Title"));
         });
 
     </script>
