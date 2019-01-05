@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;using System.Linq.Dynamic;
+using System.Linq;
+using System.Linq.Dynamic;
 using System.Web;
 using System.Web.Mvc;
 
@@ -44,15 +45,15 @@ namespace DataTableExample.Controllers
             {
                 searchdata.sortDirection = Request.Form["order[0][dir]"];
             }
-            //switch (searchdata.sortColumn)
-            //{
-            //    case "0":
-            //        searchdata.sortColumn = "Name";
-            //        break;
-            //    case "1":
-            //        searchdata.sortColumn = "Title";
-            //        break;
-            //}
+            switch (searchdata.sortColumn)
+            {
+                case "0":
+                    searchdata.sortColumn = "Name";
+                    break;
+                case "1":
+                    searchdata.sortColumn = "Title";
+                    break;
+            }
             List<SearchData> data = new List<SearchData> {
                 new SearchData{ Name="Alpesh",Title="Developer"},
                 new SearchData{ Name="Testting1",Title="testing1"},
@@ -80,7 +81,7 @@ namespace DataTableExample.Controllers
                 data = data.Where(x => x.Name.ToLower().IndexOf(searchdata.search.ToLower()) > -1 || x.Title.ToLower().IndexOf(searchdata.search.ToLower()) > -1).ToList();
             }
 
-            data = data.OrderBy(searchdata.data + " " + searchdata.sortDirection).ToList();
+            data = data.OrderBy(searchdata.sortColumn + " " + searchdata.sortDirection).ToList();
             modelList.data = data.Skip(searchdata.start).Take(searchdata.length).ToList();
             modelList.recordsFiltered = data.Count();
             modelList.recordsTotal = data.Count();

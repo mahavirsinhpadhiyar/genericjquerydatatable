@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Testing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Testing</h2>
@@ -18,40 +18,18 @@
 
 </div>
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/Datatable/jquery.dataTables.min.js"></script>
+@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
 
-<script>
-    var table;
 
-    table = $("#TestDataTable").DataTable({
-        "processing": true,
-        "serverSide": true,
-        "bSortable": true,
-        "ajax": {
-            "url": "/Home/GetTableData",
-            "type": "POST",
-            "data": function (result) {
-                debugger;
-                result.id = 0;
-                result.data = result.columns[result.order[0].column].data;
-                result.search = $("#TestDataTable input[type='search']").val();
-            },
-        },
+@section scripts{
+    <script src="~/Scripts/Datatable/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/Datatable/CommonFunction.js"></script>
+    <script>
 
-        "dataSrc": function (response) {
-            return response.data;
-        },
-        "columns": [
-            {
-                data: "Name",
-            },
-            {
-                data: "Title",
-                //"bSortable": false
-            }
-        ],
-        "pageLength": 10,
-        "LengthMenu": [10, 25, 50],
-    });
-</script>
+        var AjaxURL = '@Url.Action("GetTableData", "Home")';
+        $(document).ready(function () {
+            CommonFunction("TestDataTable",true,true,AjaxURL);
+        });
+
+    </script>
+}
