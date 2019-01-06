@@ -24,9 +24,11 @@
     <script>
         var AjaxURL = '@Url.Action("GetTableData", "Home")';
 
+        var ColumnWithCustomProperty = [{ "data": "Name", "bSortable": false }, { "data": "Title", "bSortable" :  true}] ;
         $(document).ready(function () {
             //Ext1Datatable("TestDataTable", AjaxURL, "POST", ColumnNames("Name,Title"));
-            Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnNames("Name,Title"));
+            //Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnNames("Name,Title"));
+            //Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnWithCustomProperties(ColumnWithCustomProperty));
         });
     </script>
 }

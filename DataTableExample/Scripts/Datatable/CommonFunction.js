@@ -69,3 +69,9 @@ var ColumnNames = function (columns) {
     FinalList.push(obj);
     return FinalList;
 }
+
+var ColumnWithCustomProperties = function (CustomProperty) {
+    var ColumnsFromUser = {};
+    ColumnsFromUser["\"columns\""] = CustomProperty;
+    return CustomProperty;
+}
