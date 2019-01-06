@@ -18,20 +18,15 @@
 
 </div>
 
-@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
-
-
 @section scripts{
     <script src="~/Scripts/Datatable/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/Datatable/CommonFunction.js"></script>
     <script>
-
         var AjaxURL = '@Url.Action("GetTableData", "Home")';
-        
 
         $(document).ready(function () {
-            CommonFunction("TestDataTable", true, true, AjaxURL, ColumnNames("Name,Title"));
+            //Ext1Datatable("TestDataTable", AjaxURL, "POST", ColumnNames("Name,Title"));
+            Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnNames("Name,Title"));
         });
-
     </script>
 }
