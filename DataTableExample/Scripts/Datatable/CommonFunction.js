@@ -22,7 +22,7 @@ function Ext1Datatable(tableObj, url, requestType, dynamicColumns) {
 }
 
 function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLength, lengthMenu, dynamicColumns) {
-
+    
     if (!requestType == "") {
         ExtRequestType = requestType;
     }
@@ -50,7 +50,7 @@ function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLe
         "dataSrc": function (response) {
             return response.data;
         },
-        "columns": dynamicColumns[0],
+        "columns": dynamicColumns,
         "pageLength": ExtPageLength,
         "LengthMenu": ExtLengthMenu,
     });

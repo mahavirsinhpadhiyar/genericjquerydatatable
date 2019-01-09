@@ -30,6 +30,12 @@ namespace DataTableExample.Controllers
 
         public ActionResult Testing()
         {
+            List<PropertyModel> list = new List<PropertyModel>()
+            {
+                new PropertyModel{ data="Name",width="200px",bSortable=true},
+                new PropertyModel{ data="Title",width="200px",bSortable=true}
+            };
+            ViewBag.List = list;
             return View();
         }
         //Server side sorting, paging and searching with data table
@@ -112,6 +118,13 @@ namespace DataTableExample.Controllers
             public string search { get; set; }
             public string sortDirection { get; set; }
             public string sortColumn { get; set; }
+        }
+
+        public class PropertyModel
+        {
+            public string data { get; set; }
+            public bool bSortable { get; set; }
+            public string width { get; set; }
         }
     }
 }

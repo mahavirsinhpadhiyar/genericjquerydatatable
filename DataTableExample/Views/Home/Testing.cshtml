@@ -26,7 +26,10 @@
 
         var ColumnWithCustomProperty = [{ "data": "Name", "bSortable": false }, { "data": "Title", "bSortable" :  true}] ;
         $(document).ready(function () {
+            
+            var properties = @Html.Raw(Json.Encode(ViewBag.List));
             //Ext1Datatable("TestDataTable", AjaxURL, "POST", ColumnNames("Name,Title"));
+            Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], properties);
             //Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnNames("Name,Title"));
             //Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnWithCustomProperties(ColumnWithCustomProperty));
         });
