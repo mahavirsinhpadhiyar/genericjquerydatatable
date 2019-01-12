@@ -21,8 +21,8 @@ function Ext1Datatable(tableObj, url, requestType, dynamicColumns) {
     });
 }
 
-function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLength, lengthMenu, dynamicColumns) {
-    
+function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLength, lengthMenu) {
+    debugger;
     if (!requestType == "") {
         ExtRequestType = requestType;
     }
@@ -50,10 +50,26 @@ function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLe
         "dataSrc": function (response) {
             return response.data;
         },
-        "columns": dynamicColumns,
+        "columns": GetColumnData(),
         "pageLength": ExtPageLength,
         "LengthMenu": ExtLengthMenu,
     });
+}
+
+var GetColumnData = function () {
+    var data = [];
+    $.ajax({
+        url: columnPropertyURL,
+        dataType: "json",
+        type: "GET",
+        async: false,
+        success: function (response) {
+            for (var i = 0; i < response.length; i++) {
+                data.push(response[i]);
+            }
+        }
+    });
+    return data;
 }
 
 var ColumnNames = function (columns) {

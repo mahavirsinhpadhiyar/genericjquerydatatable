@@ -27,15 +27,24 @@ namespace DataTableExample.Controllers
 
             return View();
         }
+        public JsonResult ColumnData()
 
-        public ActionResult Testing()
-        {
+        { 
             List<PropertyModel> list = new List<PropertyModel>()
             {
                 new PropertyModel{ data="Name",width="200px",bSortable=true},
                 new PropertyModel{ data="Title",width="200px",bSortable=true}
             };
-            ViewBag.List = list;
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Testing()
+        {
+            //List<PropertyModel> list = new List<PropertyModel>()
+            //{
+            //    new PropertyModel{ data="Name",width="200px",bSortable=true},
+            //    new PropertyModel{ data="Title",width="200px",bSortable=true}
+            //};
+            //ViewBag.List = list;
             return View();
         }
         //Server side sorting, paging and searching with data table
