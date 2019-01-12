@@ -24,10 +24,23 @@
     <script>
         var AjaxURL = '@Url.Action("GetTableData", "Home")';
         var columnPropertyURL = '@Url.Action("ColumnData","Home")';
+
+        //ref:- https://datatables.net/reference/option/columnDefs
+        var columnDefs = [
+            { targets: [0, 1], visible: true, searchable: true },
+
+            //test following scenarios
+            //{ targets: [0, 1], visible: false, searchable: true },
+            //{ targets: 0, visible: false, searchable: false },
+            //{ targets: [1], visible: false, searchable: false },
+
+            //Will not use below as of now
+            //{ targets: '_all', visible: false }
+        ];
         $(document).ready(function () {
            
             //Ext1Datatable("TestDataTable", AjaxURL, "POST", ColumnNames("Name,Title"));
-            Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15]);
+            Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], columnDefs);
             //Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnNames("Name,Title"));
             //Ext2Datatable("TestDataTable", true, true, AjaxURL, "POST", 10, [5, 10, 15], ColumnWithCustomProperties(ColumnWithCustomProperty));
 

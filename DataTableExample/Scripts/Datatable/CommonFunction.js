@@ -21,7 +21,7 @@ function Ext1Datatable(tableObj, url, requestType, dynamicColumns) {
     });
 }
 
-function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLength, lengthMenu) {
+function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLength, lengthMenu, columnDefs) {
     debugger;
     if (!requestType == "") {
         ExtRequestType = requestType;
@@ -51,6 +51,7 @@ function Ext2Datatable(tableObj, serverSide, bSortable, url, requestType, pageLe
             return response.data;
         },
         "columns": GetColumnData(),
+        columnDefs: columnDefs,
         "pageLength": ExtPageLength,
         "LengthMenu": ExtLengthMenu,
     });

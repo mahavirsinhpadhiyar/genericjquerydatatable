@@ -135,5 +135,12 @@ namespace DataTableExample.Controllers
             public bool bSortable { get; set; }
             public string width { get; set; }
         }
+
+        public class ColumnDefs
+        {
+            public int[] targets { get; set; }
+            public bool visible { get; set; }
+            public bool searchable { get; set; }
+        }
     }
 }
